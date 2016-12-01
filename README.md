@@ -10,4 +10,4 @@ Ruby 2.3.1 recommended, then:
 
 ## Usage
 
-`ruby vtt2an.rb /path/to/file.vtt > out.an`
+`bundle exec exe/vtt2an.rb /path/to/file.vtt > out.an`
