@@ -1,7 +1,7 @@
 # vtt2an
 
 [![Build Status](http://img.shields.io/travis/Floppy/vtt2an.svg?style=flat-square)](https://travis-ci.org/Floppy/vtt2an)
-[![Dependency Status](http://img.shields.io/gemnasium/github.com/Floppy/vtt2an.svg?style=flat-square)](https://gemnasium.com/github.com/Floppy/vtt2an)
+[![Dependency Status](https://gemnasium.com/badges/github.com/Floppy/vtt2an.svg)](https://gemnasium.com/github.com/Floppy/vtt2an)
 [![Coverage Status](http://img.shields.io/coveralls/Floppy/vtt2an.svg?style=flat-square)](https://coveralls.io/r/Floppy/vtt2an)
 [![Code Climate](http://img.shields.io/codeclimate/github/Floppy/vtt2an.svg?style=flat-square)](https://codeclimate.com/github/Floppy/vtt2an)
 [![Gem Version](http://img.shields.io/gem/v/vtt2an.svg?style=flat-square)](https://rubygems.org/gems/vtt2an)
