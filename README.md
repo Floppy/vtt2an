@@ -18,4 +18,4 @@ and then
 
 ## Usage
 
-`bundle exec exe/vtt2an.rb /path/to/file.vtt > out.an`
+`bundle exec exe/vtt2an.rb /path/to/file.vtt /path/to/output.an`

@@ -2,7 +2,7 @@ require 'active_support/inflector'
 
 module Vtt2An
 
-  class Writer
+  class Converter
     
     attr_accessor :webvtt
     
@@ -10,18 +10,18 @@ module Vtt2An
       @webvtt = webvtt
     end
     
-    def write
+    def convert
 
-      puts %Q{
+      str = %Q{
       <akomaNtoso>
         <debate>
           <meta>
             <references>
       }
       webvtt.speakers.each do |speaker|
-        puts "        <TLCPerson href=\"\" id=\"#{speaker.parameterize}\" showAs=\"#{speaker}\"/>"
+        str += "        <TLCPerson href=\"\" id=\"#{speaker.parameterize}\" showAs=\"#{speaker}\"/>"
       end
-      puts %Q{
+      str += %Q{
             </references>
           </meta>
           <debateBody>
@@ -31,22 +31,23 @@ module Vtt2An
       last_speaker = nil
       webvtt.cues.each do |cue|
         if cue.speaker != last_speaker
-          puts "          </p>"
-          puts "        </speech>" unless last_speaker.nil?
-          puts "        <speech by=\"##{cue.speaker.parameterize}\">"
-          print "          <p>"
+          str += "          </p>"
+          str += "        </speech>" unless last_speaker.nil?
+          str += "        <speech by=\"##{cue.speaker.parameterize}\">"
+          str += "          <p>"
           last_speaker = cue.speaker
         end
-        print cue.text + " "
+        str += cue.text + " "
       end
-      puts %Q{
+      str += %Q{
                 </p>
               </speech>
             </debateSection>
           </debateBody>
         </debate>
       </akomaNtoso>
-      }   
+      }
+      str   
     end
     
   end

@@ -5,6 +5,10 @@ require 'vtt2an'
 
 # Read the subtitle file
 webvtt = WebVTT.read(ARGV[0])
-# Write the output
-writer = Vtt2An::Writer.new(webvtt)
-writer.write
+# Convert
+converter = Vtt2An::Converter.new(webvtt)
+output = converter.convert
+# Write output to file
+File.open(ARGV[1], "w") do |f|
+  f.write output
+end
