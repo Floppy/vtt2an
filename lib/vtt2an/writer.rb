@@ -11,8 +11,6 @@ module Vtt2An
     end
     
     def write
-      # Find all speakers
-      speakers = webvtt.cues.map{|x|x.speaker}.uniq
 
       puts %Q{
       <akomaNtoso>
@@ -20,7 +18,7 @@ module Vtt2An
           <meta>
             <references>
       }
-      speakers.each do |speaker|
+      webvtt.speakers.each do |speaker|
         puts "        <TLCPerson href=\"\" id=\"#{speaker.parameterize}\" showAs=\"#{speaker}\"/>"
       end
       puts %Q{
@@ -39,7 +37,7 @@ module Vtt2An
           print "          <p>"
           last_speaker = cue.speaker
         end
-        print cue.filtered_text + " "
+        print cue.text + " "
       end
       puts %Q{
                 </p>
