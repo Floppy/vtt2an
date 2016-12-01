@@ -25,4 +25,21 @@ and then
 
 ## Usage
 
+### Ruby
+
+Load a WebVTT file using [webvtt-ruby](https://github.com/opencoconut/webvtt-ruby), then convert it using `Vtt2An::Converter` to a `REXML::Document` in Akoma Ntoso format:
+
+```
+webvtt = WebVTT.read "in.wtt"
+converter = Vtt2An::Converter.new webvtt
+output = converter.convert
+File.open("out.an", "w") do |f|
+  output.write f
+end
+```
+
+### Command line
+
+If you just want to convert files, you can use the handy command-line tool:
+
 `bundle exec exe/vtt2an.rb /path/to/file.vtt /path/to/output.an`
