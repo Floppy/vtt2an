@@ -6,6 +6,14 @@ Convert WebVTT subtitles files into Akoma Ntoso transcripts.
 
 Ruby 2.3.1 recommended, then:
 
+`gem install vtt2an`
+
+or add to your Gemfile:
+
+`gem "vtt2an"`
+
+and then
+
 `bundle`
 
 ## Usage
