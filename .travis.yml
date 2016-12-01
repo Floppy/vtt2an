@@ -1,5 +1,13 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.3.1
+- 2.3.1
 before_install: gem install bundler -v 1.12.5
+deploy:
+  provider: rubygems
+  api_key:
+    secure: Lm+6OZVuwMjtu3n1XiluIlvgLjgN1itJ59JVLoBC+XsMkUXPzYVi5XJA1SGp1RMtYoHauOsii5Mp3zJux828sUc/BulBB5OYqmYVA3+mFSsYH8yQnSDbBosbea4bgpnThBGk4l5kjbfk+yw+u8Z4YP2FOYLJgoDzYqKtSDSIE8D2rtRK96yp95oWCeN0XZE/5P8QrvEC6reEtdCPzybPfwP4jk3SGdYzxWF6CCS5Bv0CKihhfCVo+8eE9KQgO0mvlo5fdlFvLc5/xv9obrlJ5YSbEw9ujf1Nx+YFFWa+jfnWHLN7q0ubpGyu8wyM8Foo+BuQohP4ID18GdbZkm6Yf47Zz2nJP9cZY1DxFMIxXqClX1vURy4+DFHhsbG7n57FHjt/qAMOgCQrYfsBxRFHsfc9YyTHbcBiR7F3lTwXLZhnJYXNx/sgZQ+HpDKISXzDtyrRxzf2QBHCKJ2BCit0UDRLYUfO+Iz9+lDuXi3OIEBLHicuLiQAuyUGwuJtFqG3JgQg0qiWBl0ExonfNqkh9vOqroxNdmOXtTQszxBCLYlCWSslhGDybRsW3mEywF4LNFUsRGAO1dKnSOGMQWl4iHCqKD9rIy3+dNERhYQ/HtKrEIkQdH1T6ILSiERkDEJU++4yU8HFJAQ9UqXjfcChTzDqLViQkSlPF/gl7ngToOU=
+  gem: vtt2an
+  on:
+    tags: true
+    repo: Floppy/vtt2an
