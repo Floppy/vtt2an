@@ -10,5 +10,5 @@ converter = Vtt2An::Converter.new(webvtt)
 output = converter.convert
 # Write output to file
 File.open(ARGV[1], "w") do |f|
-  f.write output
+  output.write(f, 1)
 end

@@ -1,4 +1,5 @@
 require 'active_support/inflector'
+require 'rexml/document'
 
 module Vtt2An
 
@@ -11,43 +12,35 @@ module Vtt2An
     end
     
     def convert
-
-      str = %Q{
-      <akomaNtoso>
-        <debate>
-          <meta>
-            <references>
-      }
+      
+      output = REXML::Document.new
+      an = output.add_element("akomaNtoso")
+      debate = an.add_element("debate")
+      meta = debate.add_element("meta")
+      references = meta.add_element("references")
+            
       webvtt.speakers.each do |speaker|
-        str += "        <TLCPerson href=\"\" id=\"#{speaker.parameterize}\" showAs=\"#{speaker}\"/>"
+        references.add_element("TLCPerson", 
+          "href" => "", 
+          "id" => speaker.parameterize,
+          "showAs" => speaker
+        )
       end
-      str += %Q{
-            </references>
-          </meta>
-          <debateBody>
-            <debateSection>        
-              <heading>Title</heading>
-      }
-      last_speaker = nil
-      webvtt.cues.each do |cue|
-        if cue.speaker != last_speaker
-          str += "          </p>"
-          str += "        </speech>" unless last_speaker.nil?
-          str += "        <speech by=\"##{cue.speaker.parameterize}\">"
-          str += "          <p>"
-          last_speaker = cue.speaker
-        end
-        str += cue.text + " "
+
+      body = debate.add_element("debateBody")
+      section = body.add_element("debateSection")
+      heading = section.add_element("heading")
+      heading.add_text "Title"
+
+      webvtt.merged_cues.each do |cue|
+        speech = section.add_element("speech",
+          "by" => "##{cue.speaker.parameterize}"
+        )
+        p = speech.add_element("p")
+        p.add_text cue.text
       end
-      str += %Q{
-                </p>
-              </speech>
-            </debateSection>
-          </debateBody>
-        </debate>
-      </akomaNtoso>
-      }
-      str   
+    
+      output
     end
     
   end
